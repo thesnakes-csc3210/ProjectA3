@@ -1,0 +1,25 @@
+First off, sorry about the different sizes for the pictures I had to swap monitors 
+I can take more pictures if you need me to. There's a section where I found out
+our issue with the ldrsh. We were also using the sh modifier when storing the address
+in the register and that threw cause the seg fault, so you only use it for the second
+load line(these photos have sh at the end of the name).
+
+The second set of pictures shows the difference when using ldr vs ldrsh. The memoryVals
+photo also shows the memory values using the address that was stored in the 
+register. I had a few typos so the stuff highlighted in gray is the important stuff.
+
+I think this system reads registers the same way x86 does. I'm still not 100% sure
+how the flags work but I found a bunch of differences when moving signed values
+versus unsigned values. The first compare photo just shows you the code and where I put
+the breakpoint. The second and third photos show you the values for the registers after
+that memory value was added. You can see that when I didn't use sh it only changed the
+second half of the register to FFFE which is -2 in halfword or the positive equivalent
+of that. When using ldrsh it worked like movsx, filling the first 4 bits with FFFF.
+However, when converted to decimal it was still positive. This is where the x86 part
+comes in. I think the computer just doesn't care and converts it to the positive value
+anyway. I think it is up to the user to look at the flags and determine if it is
+positive or negative.
+
+Also, seeing as I couldn't find any other errors in the program I think the error we
+were meant to find was that the wrong keyword was used for the data type.
+Hope this helps! 
