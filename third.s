@@ -1,5 +1,5 @@
 .section .data
-a: .hword -1
+a: .hword -2
 
 .section .text
 
@@ -7,7 +7,9 @@ a: .hword -1
 _start:
 
 	mov r0, #0x1
-	ldrsh r1, =a
+	ldr r1, =a
+	ldr r1, [r1]
+	ldr r1, =a
 	ldrsh r1, [r1]
 	mov r1, #0xFFFFFFFF
 	mov r2, #0xFF
